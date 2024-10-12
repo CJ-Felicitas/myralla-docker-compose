@@ -1,0 +1,13 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: myralla-core-db-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${MYRALLA_DBPG_USERNAME}
+      POSTGRES_PASSWORD: ${MYRALLA_DBPG_PASSWORD}
+      POSTGRES_DB: ${MYRALLA_DBPG_DATABASE}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
